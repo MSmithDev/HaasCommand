@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="command.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="command.Designer.cs">
+      <DependentUpon>command.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConnectF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +60,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="command.resx">
+      <DependentUpon>command.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConnectF.resx">
       <DependentUpon>ConnectF.cs</DependentUpon>
     </EmbeddedResource>
