@@ -28,6 +28,8 @@ namespace HaasCommand {
         
         private machineDataDataTable tablemachineData;
         
+        private macroLocationsDataTable tablemacroLocations;
+        
         private global::System.Data.DataRelation relationtoolData_machineData;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
@@ -64,6 +66,9 @@ namespace HaasCommand {
                 if ((ds.Tables["machineData"] != null)) {
                     base.Tables.Add(new machineDataDataTable(ds.Tables["machineData"]));
                 }
+                if ((ds.Tables["macroLocations"] != null)) {
+                    base.Tables.Add(new macroLocationsDataTable(ds.Tables["macroLocations"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -99,6 +104,16 @@ namespace HaasCommand {
         public machineDataDataTable machineData {
             get {
                 return this.tablemachineData;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public macroLocationsDataTable macroLocations {
+            get {
+                return this.tablemacroLocations;
             }
         }
         
@@ -175,6 +190,9 @@ namespace HaasCommand {
                 if ((ds.Tables["machineData"] != null)) {
                     base.Tables.Add(new machineDataDataTable(ds.Tables["machineData"]));
                 }
+                if ((ds.Tables["macroLocations"] != null)) {
+                    base.Tables.Add(new macroLocationsDataTable(ds.Tables["macroLocations"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -220,6 +238,12 @@ namespace HaasCommand {
                     this.tablemachineData.InitVars();
                 }
             }
+            this.tablemacroLocations = ((macroLocationsDataTable)(base.Tables["macroLocations"]));
+            if ((initTable == true)) {
+                if ((this.tablemacroLocations != null)) {
+                    this.tablemacroLocations.InitVars();
+                }
+            }
             this.relationtoolData_machineData = this.Relations["toolData_machineData"];
         }
         
@@ -235,6 +259,8 @@ namespace HaasCommand {
             base.Tables.Add(this.tabletoolData);
             this.tablemachineData = new machineDataDataTable();
             base.Tables.Add(this.tablemachineData);
+            this.tablemacroLocations = new macroLocationsDataTable();
+            base.Tables.Add(this.tablemacroLocations);
             this.relationtoolData_machineData = new global::System.Data.DataRelation("toolData_machineData", new global::System.Data.DataColumn[] {
                         this.tabletoolData.serialNumberColumn}, new global::System.Data.DataColumn[] {
                         this.tablemachineData.serialNumberColumn}, false);
@@ -250,6 +276,12 @@ namespace HaasCommand {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private bool ShouldSerializemachineData() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private bool ShouldSerializemacroLocations() {
             return false;
         }
         
@@ -313,6 +345,9 @@ namespace HaasCommand {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void machineDataRowChangeEventHandler(object sender, machineDataRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public delegate void macroLocationsRowChangeEventHandler(object sender, macroLocationsRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -975,6 +1010,426 @@ namespace HaasCommand {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class macroLocationsDataTable : global::System.Data.TypedTableBase<macroLocationsRow> {
+            
+            private global::System.Data.DataColumn columnmachineType;
+            
+            private global::System.Data.DataColumn columnisNGC;
+            
+            private global::System.Data.DataColumn columnmToolLengthStart;
+            
+            private global::System.Data.DataColumn columnmToolLengthEnd;
+            
+            private global::System.Data.DataColumn columnmToolDiameterStart;
+            
+            private global::System.Data.DataColumn columnmToolDiameterEnd;
+            
+            private global::System.Data.DataColumn columnmToolCoolantStart;
+            
+            private global::System.Data.DataColumn columnmToolCoolantEnd;
+            
+            private global::System.Data.DataColumn columnoptionStop;
+            
+            private global::System.Data.DataColumn columnsingleBlock;
+            
+            private global::System.Data.DataColumn columnblockDelete;
+            
+            private global::System.Data.DataColumn columng54Start;
+            
+            private global::System.Data.DataColumn columng54End;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public macroLocationsDataTable() {
+                this.TableName = "macroLocations";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal macroLocationsDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected macroLocationsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn machineTypeColumn {
+                get {
+                    return this.columnmachineType;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn isNGCColumn {
+                get {
+                    return this.columnisNGC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn mToolLengthStartColumn {
+                get {
+                    return this.columnmToolLengthStart;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn mToolLengthEndColumn {
+                get {
+                    return this.columnmToolLengthEnd;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn mToolDiameterStartColumn {
+                get {
+                    return this.columnmToolDiameterStart;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn mToolDiameterEndColumn {
+                get {
+                    return this.columnmToolDiameterEnd;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn mToolCoolantStartColumn {
+                get {
+                    return this.columnmToolCoolantStart;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn mToolCoolantEndColumn {
+                get {
+                    return this.columnmToolCoolantEnd;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn optionStopColumn {
+                get {
+                    return this.columnoptionStop;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn singleBlockColumn {
+                get {
+                    return this.columnsingleBlock;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn blockDeleteColumn {
+                get {
+                    return this.columnblockDelete;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn g54StartColumn {
+                get {
+                    return this.columng54Start;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn g54EndColumn {
+                get {
+                    return this.columng54End;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public macroLocationsRow this[int index] {
+                get {
+                    return ((macroLocationsRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event macroLocationsRowChangeEventHandler macroLocationsRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event macroLocationsRowChangeEventHandler macroLocationsRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event macroLocationsRowChangeEventHandler macroLocationsRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event macroLocationsRowChangeEventHandler macroLocationsRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void AddmacroLocationsRow(macroLocationsRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public macroLocationsRow AddmacroLocationsRow(string machineType, bool isNGC, int mToolLengthStart, string mToolLengthEnd, string mToolDiameterStart, string mToolDiameterEnd, string mToolCoolantStart, string mToolCoolantEnd, int optionStop, int singleBlock, int blockDelete, int g54Start, int g54End) {
+                macroLocationsRow rowmacroLocationsRow = ((macroLocationsRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        machineType,
+                        isNGC,
+                        mToolLengthStart,
+                        mToolLengthEnd,
+                        mToolDiameterStart,
+                        mToolDiameterEnd,
+                        mToolCoolantStart,
+                        mToolCoolantEnd,
+                        optionStop,
+                        singleBlock,
+                        blockDelete,
+                        g54Start,
+                        g54End};
+                rowmacroLocationsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowmacroLocationsRow);
+                return rowmacroLocationsRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                macroLocationsDataTable cln = ((macroLocationsDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new macroLocationsDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal void InitVars() {
+                this.columnmachineType = base.Columns["machineType"];
+                this.columnisNGC = base.Columns["isNGC"];
+                this.columnmToolLengthStart = base.Columns["mToolLengthStart"];
+                this.columnmToolLengthEnd = base.Columns["mToolLengthEnd"];
+                this.columnmToolDiameterStart = base.Columns["mToolDiameterStart"];
+                this.columnmToolDiameterEnd = base.Columns["mToolDiameterEnd"];
+                this.columnmToolCoolantStart = base.Columns["mToolCoolantStart"];
+                this.columnmToolCoolantEnd = base.Columns["mToolCoolantEnd"];
+                this.columnoptionStop = base.Columns["optionStop"];
+                this.columnsingleBlock = base.Columns["singleBlock"];
+                this.columnblockDelete = base.Columns["blockDelete"];
+                this.columng54Start = base.Columns["g54Start"];
+                this.columng54End = base.Columns["g54End"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitClass() {
+                this.columnmachineType = new global::System.Data.DataColumn("machineType", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmachineType);
+                this.columnisNGC = new global::System.Data.DataColumn("isNGC", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnisNGC);
+                this.columnmToolLengthStart = new global::System.Data.DataColumn("mToolLengthStart", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmToolLengthStart);
+                this.columnmToolLengthEnd = new global::System.Data.DataColumn("mToolLengthEnd", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmToolLengthEnd);
+                this.columnmToolDiameterStart = new global::System.Data.DataColumn("mToolDiameterStart", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmToolDiameterStart);
+                this.columnmToolDiameterEnd = new global::System.Data.DataColumn("mToolDiameterEnd", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmToolDiameterEnd);
+                this.columnmToolCoolantStart = new global::System.Data.DataColumn("mToolCoolantStart", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmToolCoolantStart);
+                this.columnmToolCoolantEnd = new global::System.Data.DataColumn("mToolCoolantEnd", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmToolCoolantEnd);
+                this.columnoptionStop = new global::System.Data.DataColumn("optionStop", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnoptionStop);
+                this.columnsingleBlock = new global::System.Data.DataColumn("singleBlock", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsingleBlock);
+                this.columnblockDelete = new global::System.Data.DataColumn("blockDelete", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnblockDelete);
+                this.columng54Start = new global::System.Data.DataColumn("g54Start", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columng54Start);
+                this.columng54End = new global::System.Data.DataColumn("g54End", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columng54End);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnmachineType}, false));
+                this.columnmachineType.AllowDBNull = false;
+                this.columnmachineType.Unique = true;
+                this.columnisNGC.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public macroLocationsRow NewmacroLocationsRow() {
+                return ((macroLocationsRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new macroLocationsRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(macroLocationsRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.macroLocationsRowChanged != null)) {
+                    this.macroLocationsRowChanged(this, new macroLocationsRowChangeEvent(((macroLocationsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.macroLocationsRowChanging != null)) {
+                    this.macroLocationsRowChanging(this, new macroLocationsRowChangeEvent(((macroLocationsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.macroLocationsRowDeleted != null)) {
+                    this.macroLocationsRowDeleted(this, new macroLocationsRowChangeEvent(((macroLocationsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.macroLocationsRowDeleting != null)) {
+                    this.macroLocationsRowDeleting(this, new macroLocationsRowChangeEvent(((macroLocationsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void RemovemacroLocationsRow(macroLocationsRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSet1 ds = new DataSet1();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "macroLocationsDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class toolDataRow : global::System.Data.DataRow {
@@ -1357,6 +1812,351 @@ namespace HaasCommand {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class macroLocationsRow : global::System.Data.DataRow {
+            
+            private macroLocationsDataTable tablemacroLocations;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal macroLocationsRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablemacroLocations = ((macroLocationsDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string machineType {
+                get {
+                    return ((string)(this[this.tablemacroLocations.machineTypeColumn]));
+                }
+                set {
+                    this[this.tablemacroLocations.machineTypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool isNGC {
+                get {
+                    return ((bool)(this[this.tablemacroLocations.isNGCColumn]));
+                }
+                set {
+                    this[this.tablemacroLocations.isNGCColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int mToolLengthStart {
+                get {
+                    try {
+                        return ((int)(this[this.tablemacroLocations.mToolLengthStartColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'mToolLengthStart\' in table \'macroLocations\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemacroLocations.mToolLengthStartColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string mToolLengthEnd {
+                get {
+                    try {
+                        return ((string)(this[this.tablemacroLocations.mToolLengthEndColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'mToolLengthEnd\' in table \'macroLocations\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemacroLocations.mToolLengthEndColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string mToolDiameterStart {
+                get {
+                    try {
+                        return ((string)(this[this.tablemacroLocations.mToolDiameterStartColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'mToolDiameterStart\' in table \'macroLocations\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemacroLocations.mToolDiameterStartColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string mToolDiameterEnd {
+                get {
+                    try {
+                        return ((string)(this[this.tablemacroLocations.mToolDiameterEndColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'mToolDiameterEnd\' in table \'macroLocations\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemacroLocations.mToolDiameterEndColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string mToolCoolantStart {
+                get {
+                    try {
+                        return ((string)(this[this.tablemacroLocations.mToolCoolantStartColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'mToolCoolantStart\' in table \'macroLocations\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemacroLocations.mToolCoolantStartColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string mToolCoolantEnd {
+                get {
+                    try {
+                        return ((string)(this[this.tablemacroLocations.mToolCoolantEndColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'mToolCoolantEnd\' in table \'macroLocations\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemacroLocations.mToolCoolantEndColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int optionStop {
+                get {
+                    try {
+                        return ((int)(this[this.tablemacroLocations.optionStopColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'optionStop\' in table \'macroLocations\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemacroLocations.optionStopColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int singleBlock {
+                get {
+                    try {
+                        return ((int)(this[this.tablemacroLocations.singleBlockColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'singleBlock\' in table \'macroLocations\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemacroLocations.singleBlockColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int blockDelete {
+                get {
+                    try {
+                        return ((int)(this[this.tablemacroLocations.blockDeleteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'blockDelete\' in table \'macroLocations\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemacroLocations.blockDeleteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int g54Start {
+                get {
+                    try {
+                        return ((int)(this[this.tablemacroLocations.g54StartColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'g54Start\' in table \'macroLocations\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemacroLocations.g54StartColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int g54End {
+                get {
+                    try {
+                        return ((int)(this[this.tablemacroLocations.g54EndColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'g54End\' in table \'macroLocations\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemacroLocations.g54EndColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsmToolLengthStartNull() {
+                return this.IsNull(this.tablemacroLocations.mToolLengthStartColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetmToolLengthStartNull() {
+                this[this.tablemacroLocations.mToolLengthStartColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsmToolLengthEndNull() {
+                return this.IsNull(this.tablemacroLocations.mToolLengthEndColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetmToolLengthEndNull() {
+                this[this.tablemacroLocations.mToolLengthEndColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsmToolDiameterStartNull() {
+                return this.IsNull(this.tablemacroLocations.mToolDiameterStartColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetmToolDiameterStartNull() {
+                this[this.tablemacroLocations.mToolDiameterStartColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsmToolDiameterEndNull() {
+                return this.IsNull(this.tablemacroLocations.mToolDiameterEndColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetmToolDiameterEndNull() {
+                this[this.tablemacroLocations.mToolDiameterEndColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsmToolCoolantStartNull() {
+                return this.IsNull(this.tablemacroLocations.mToolCoolantStartColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetmToolCoolantStartNull() {
+                this[this.tablemacroLocations.mToolCoolantStartColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsmToolCoolantEndNull() {
+                return this.IsNull(this.tablemacroLocations.mToolCoolantEndColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetmToolCoolantEndNull() {
+                this[this.tablemacroLocations.mToolCoolantEndColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsoptionStopNull() {
+                return this.IsNull(this.tablemacroLocations.optionStopColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetoptionStopNull() {
+                this[this.tablemacroLocations.optionStopColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IssingleBlockNull() {
+                return this.IsNull(this.tablemacroLocations.singleBlockColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetsingleBlockNull() {
+                this[this.tablemacroLocations.singleBlockColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsblockDeleteNull() {
+                return this.IsNull(this.tablemacroLocations.blockDeleteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetblockDeleteNull() {
+                this[this.tablemacroLocations.blockDeleteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isg54StartNull() {
+                return this.IsNull(this.tablemacroLocations.g54StartColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setg54StartNull() {
+                this[this.tablemacroLocations.g54StartColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isg54EndNull() {
+                return this.IsNull(this.tablemacroLocations.g54EndColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setg54EndNull() {
+                this[this.tablemacroLocations.g54EndColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -1410,6 +2210,40 @@ namespace HaasCommand {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public machineDataRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public class macroLocationsRowChangeEvent : global::System.EventArgs {
+            
+            private macroLocationsRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public macroLocationsRowChangeEvent(macroLocationsRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public macroLocationsRow Row {
                 get {
                     return this.eventRow;
                 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -54,9 +55,25 @@ namespace HaasCommand
 
             Console.WriteLine("Connected");
             //Console.WriteLine(reader.ReadLine());
-            
 
-        }
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\HCDataset.mdf;Integrated Security=True;Connect Timeout=30");
+
+
+
+
+            conn.Open();
+
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "INSERT OVERWRITE toolData (serialNumber, toolNumber, toolLength, toolDiameter, coolantPosition) values('"+228+"','"+1+"','"+3+"','"+0.5+"','"+21+"')";
+            cmd.ExecuteNonQuery();
+
+
+                
+                
+                }
+
+
         private void command_FormClosing(object sender, FormClosingEventArgs e)
         {
             Console.WriteLine("Closing Window and connection");

@@ -37,6 +37,25 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="macroLocations" msprop:Generator_TableClassName="macroLocationsDataTable" msprop:Generator_TableVarName="tablemacroLocations" msprop:Generator_TablePropName="macroLocations" msprop:Generator_RowDeletingName="macroLocationsRowDeleting" msprop:Generator_RowChangingName="macroLocationsRowChanging" msprop:Generator_RowEvHandlerName="macroLocationsRowChangeEventHandler" msprop:Generator_RowDeletedName="macroLocationsRowDeleted" msprop:Generator_UserTableName="macroLocations" msprop:Generator_RowChangedName="macroLocationsRowChanged" msprop:Generator_RowEvArgName="macroLocationsRowChangeEvent" msprop:Generator_RowClassName="macroLocationsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="machineType" msprop:Generator_ColumnVarNameInTable="columnmachineType" msprop:Generator_ColumnPropNameInRow="machineType" msprop:Generator_ColumnPropNameInTable="machineTypeColumn" msprop:Generator_UserColumnName="machineType" type="xs:string" />
+              <xs:element name="isNGC" msprop:Generator_ColumnVarNameInTable="columnisNGC" msprop:Generator_ColumnPropNameInRow="isNGC" msprop:Generator_ColumnPropNameInTable="isNGCColumn" msprop:Generator_UserColumnName="isNGC" type="xs:boolean" />
+              <xs:element name="mToolLengthStart" msprop:Generator_ColumnVarNameInTable="columnmToolLengthStart" msprop:Generator_ColumnPropNameInRow="mToolLengthStart" msprop:Generator_ColumnPropNameInTable="mToolLengthStartColumn" msprop:Generator_UserColumnName="mToolLengthStart" type="xs:int" minOccurs="0" />
+              <xs:element name="mToolLengthEnd" msprop:Generator_ColumnVarNameInTable="columnmToolLengthEnd" msprop:Generator_ColumnPropNameInRow="mToolLengthEnd" msprop:Generator_ColumnPropNameInTable="mToolLengthEndColumn" msprop:Generator_UserColumnName="mToolLengthEnd" type="xs:string" minOccurs="0" />
+              <xs:element name="mToolDiameterStart" msprop:Generator_ColumnVarNameInTable="columnmToolDiameterStart" msprop:Generator_ColumnPropNameInRow="mToolDiameterStart" msprop:Generator_ColumnPropNameInTable="mToolDiameterStartColumn" msprop:Generator_UserColumnName="mToolDiameterStart" type="xs:string" minOccurs="0" />
+              <xs:element name="mToolDiameterEnd" msprop:Generator_ColumnVarNameInTable="columnmToolDiameterEnd" msprop:Generator_ColumnPropNameInRow="mToolDiameterEnd" msprop:Generator_ColumnPropNameInTable="mToolDiameterEndColumn" msprop:Generator_UserColumnName="mToolDiameterEnd" type="xs:string" minOccurs="0" />
+              <xs:element name="mToolCoolantStart" msprop:Generator_ColumnVarNameInTable="columnmToolCoolantStart" msprop:Generator_ColumnPropNameInRow="mToolCoolantStart" msprop:Generator_ColumnPropNameInTable="mToolCoolantStartColumn" msprop:Generator_UserColumnName="mToolCoolantStart" type="xs:string" minOccurs="0" />
+              <xs:element name="mToolCoolantEnd" msprop:Generator_ColumnVarNameInTable="columnmToolCoolantEnd" msprop:Generator_ColumnPropNameInRow="mToolCoolantEnd" msprop:Generator_ColumnPropNameInTable="mToolCoolantEndColumn" msprop:Generator_UserColumnName="mToolCoolantEnd" type="xs:string" minOccurs="0" />
+              <xs:element name="optionStop" msprop:Generator_ColumnVarNameInTable="columnoptionStop" msprop:Generator_ColumnPropNameInRow="optionStop" msprop:Generator_ColumnPropNameInTable="optionStopColumn" msprop:Generator_UserColumnName="optionStop" type="xs:int" minOccurs="0" />
+              <xs:element name="singleBlock" msprop:Generator_ColumnVarNameInTable="columnsingleBlock" msprop:Generator_ColumnPropNameInRow="singleBlock" msprop:Generator_ColumnPropNameInTable="singleBlockColumn" msprop:Generator_UserColumnName="singleBlock" type="xs:int" minOccurs="0" />
+              <xs:element name="blockDelete" msprop:Generator_ColumnVarNameInTable="columnblockDelete" msprop:Generator_ColumnPropNameInRow="blockDelete" msprop:Generator_ColumnPropNameInTable="blockDeleteColumn" msprop:Generator_UserColumnName="blockDelete" type="xs:int" minOccurs="0" />
+              <xs:element name="g54Start" msprop:Generator_ColumnVarNameInTable="columng54Start" msprop:Generator_ColumnPropNameInRow="g54Start" msprop:Generator_ColumnPropNameInTable="g54StartColumn" msprop:Generator_UserColumnName="g54Start" type="xs:int" minOccurs="0" />
+              <xs:element name="g54End" msprop:Generator_ColumnVarNameInTable="columng54End" msprop:Generator_ColumnPropNameInRow="g54End" msprop:Generator_ColumnPropNameInTable="g54EndColumn" msprop:Generator_UserColumnName="g54End" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1">
@@ -46,6 +65,10 @@
     <xs:unique name="machineData_Constraint1" msdata:ConstraintName="Constraint1">
       <xs:selector xpath=".//mstns:machineData" />
       <xs:field xpath="mstns:serialNumber" />
+    </xs:unique>
+    <xs:unique name="macroLocations_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:macroLocations" />
+      <xs:field xpath="mstns:machineType" />
     </xs:unique>
   </xs:element>
   <xs:annotation>

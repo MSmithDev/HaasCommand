@@ -10,3 +10,13 @@ namespace HaasCommand
     {
     }
 }
+
+namespace HaasCommand
+{
+
+
+    partial class DataSet1
+    {
+
+    }
+}
