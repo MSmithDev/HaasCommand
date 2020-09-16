@@ -58,6 +58,20 @@
     <Compile Include="ConnectF.Designer.cs">
       <DependentUpon>ConnectF.cs</DependentUpon>
     </Compile>
+    <Compile Include="HCData.cs">
+      <DependentUpon>HCData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="HCData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HCData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="debug.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="debug.Designer.cs">
+      <DependentUpon>debug.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="command.resx">
@@ -65,6 +79,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConnectF.resx">
       <DependentUpon>ConnectF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="debug.resx">
+      <DependentUpon>debug.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -75,6 +92,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="HCData.xsc">
+      <DependentUpon>HCData.xsd</DependentUpon>
+    </None>
+    <None Include="HCData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>HCData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="HCData.xss">
+      <DependentUpon>HCData.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
