@@ -30,6 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.toolDataview = new System.Windows.Forms.DataGridView();
+            this.serialNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolLengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolDiameterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coolantPositionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet1 = new HaasCommand.DataSet1();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,11 +43,11 @@
             this.model_tb = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.software_version_tb = new System.Windows.Forms.TextBox();
-            this.serialNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolLengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolDiameterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coolantPositionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.get_toolOffsets_btn = new System.Windows.Forms.Button();
+            this.toolOffset_progbar = new System.Windows.Forms.ProgressBar();
+            this.toolOffset_save_btn = new System.Windows.Forms.Button();
+            this.optionStop_cbtn = new System.Windows.Forms.CheckBox();
+            this.getUpdates = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.toolDataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolDataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
@@ -64,11 +69,49 @@
             this.toolDiameterDataGridViewTextBoxColumn,
             this.coolantPositionDataGridViewTextBoxColumn});
             this.toolDataview.DataSource = this.toolDataBindingSource;
-            this.toolDataview.Location = new System.Drawing.Point(334, 61);
+            this.toolDataview.Location = new System.Drawing.Point(317, 58);
             this.toolDataview.Name = "toolDataview";
             this.toolDataview.RowHeadersVisible = false;
-            this.toolDataview.Size = new System.Drawing.Size(454, 377);
+            this.toolDataview.Size = new System.Drawing.Size(471, 377);
             this.toolDataview.TabIndex = 0;
+            this.toolDataview.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.toolDataview_CellValueChanged);
+            // 
+            // serialNumberDataGridViewTextBoxColumn
+            // 
+            this.serialNumberDataGridViewTextBoxColumn.DataPropertyName = "serialNumber";
+            this.serialNumberDataGridViewTextBoxColumn.HeaderText = "Serial Number";
+            this.serialNumberDataGridViewTextBoxColumn.Name = "serialNumberDataGridViewTextBoxColumn";
+            this.serialNumberDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // toolNumberDataGridViewTextBoxColumn
+            // 
+            this.toolNumberDataGridViewTextBoxColumn.DataPropertyName = "toolNumber";
+            this.toolNumberDataGridViewTextBoxColumn.HeaderText = "Tool Number";
+            this.toolNumberDataGridViewTextBoxColumn.Name = "toolNumberDataGridViewTextBoxColumn";
+            this.toolNumberDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // toolLengthDataGridViewTextBoxColumn
+            // 
+            this.toolLengthDataGridViewTextBoxColumn.DataPropertyName = "toolLength";
+            this.toolLengthDataGridViewTextBoxColumn.HeaderText = "Length";
+            this.toolLengthDataGridViewTextBoxColumn.Name = "toolLengthDataGridViewTextBoxColumn";
+            this.toolLengthDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.toolLengthDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // toolDiameterDataGridViewTextBoxColumn
+            // 
+            this.toolDiameterDataGridViewTextBoxColumn.DataPropertyName = "toolDiameter";
+            this.toolDiameterDataGridViewTextBoxColumn.HeaderText = "Diameter";
+            this.toolDiameterDataGridViewTextBoxColumn.Name = "toolDiameterDataGridViewTextBoxColumn";
+            this.toolDiameterDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.toolDiameterDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // coolantPositionDataGridViewTextBoxColumn
+            // 
+            this.coolantPositionDataGridViewTextBoxColumn.DataPropertyName = "coolantPosition";
+            this.coolantPositionDataGridViewTextBoxColumn.HeaderText = "Pcool Position";
+            this.coolantPositionDataGridViewTextBoxColumn.Name = "coolantPositionDataGridViewTextBoxColumn";
+            this.coolantPositionDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // toolDataBindingSource
             // 
@@ -131,48 +174,62 @@
             this.software_version_tb.Size = new System.Drawing.Size(100, 20);
             this.software_version_tb.TabIndex = 6;
             // 
-            // serialNumberDataGridViewTextBoxColumn
+            // get_toolOffsets_btn
             // 
-            this.serialNumberDataGridViewTextBoxColumn.DataPropertyName = "serialNumber";
-            this.serialNumberDataGridViewTextBoxColumn.HeaderText = "Serial Number";
-            this.serialNumberDataGridViewTextBoxColumn.Name = "serialNumberDataGridViewTextBoxColumn";
-            this.serialNumberDataGridViewTextBoxColumn.Visible = false;
+            this.get_toolOffsets_btn.Location = new System.Drawing.Point(16, 114);
+            this.get_toolOffsets_btn.Name = "get_toolOffsets_btn";
+            this.get_toolOffsets_btn.Size = new System.Drawing.Size(164, 42);
+            this.get_toolOffsets_btn.TabIndex = 7;
+            this.get_toolOffsets_btn.Text = "Get Tool Offsets";
+            this.get_toolOffsets_btn.UseVisualStyleBackColor = true;
+            this.get_toolOffsets_btn.Click += new System.EventHandler(this.get_toolOffsets_btn_Click);
             // 
-            // toolNumberDataGridViewTextBoxColumn
+            // toolOffset_progbar
             // 
-            this.toolNumberDataGridViewTextBoxColumn.DataPropertyName = "toolNumber";
-            this.toolNumberDataGridViewTextBoxColumn.HeaderText = "Tool Number";
-            this.toolNumberDataGridViewTextBoxColumn.Name = "toolNumberDataGridViewTextBoxColumn";
-            this.toolNumberDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.toolOffset_progbar.Location = new System.Drawing.Point(317, 7);
+            this.toolOffset_progbar.Maximum = 25;
+            this.toolOffset_progbar.Name = "toolOffset_progbar";
+            this.toolOffset_progbar.Size = new System.Drawing.Size(471, 42);
+            this.toolOffset_progbar.TabIndex = 8;
             // 
-            // toolLengthDataGridViewTextBoxColumn
+            // toolOffset_save_btn
             // 
-            this.toolLengthDataGridViewTextBoxColumn.DataPropertyName = "toolLength";
-            this.toolLengthDataGridViewTextBoxColumn.HeaderText = "Length";
-            this.toolLengthDataGridViewTextBoxColumn.Name = "toolLengthDataGridViewTextBoxColumn";
-            this.toolLengthDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.toolLengthDataGridViewTextBoxColumn.Width = 125;
+            this.toolOffset_save_btn.Location = new System.Drawing.Point(16, 162);
+            this.toolOffset_save_btn.Name = "toolOffset_save_btn";
+            this.toolOffset_save_btn.Size = new System.Drawing.Size(164, 42);
+            this.toolOffset_save_btn.TabIndex = 9;
+            this.toolOffset_save_btn.Text = "Save Changes";
+            this.toolOffset_save_btn.UseVisualStyleBackColor = true;
+            this.toolOffset_save_btn.Click += new System.EventHandler(this.toolOffset_save_btn_Click);
             // 
-            // toolDiameterDataGridViewTextBoxColumn
+            // optionStop_cbtn
             // 
-            this.toolDiameterDataGridViewTextBoxColumn.DataPropertyName = "toolDiameter";
-            this.toolDiameterDataGridViewTextBoxColumn.HeaderText = "Diameter";
-            this.toolDiameterDataGridViewTextBoxColumn.Name = "toolDiameterDataGridViewTextBoxColumn";
-            this.toolDiameterDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.toolDiameterDataGridViewTextBoxColumn.Width = 125;
+            this.optionStop_cbtn.Appearance = System.Windows.Forms.Appearance.Button;
+            this.optionStop_cbtn.AutoSize = true;
+            this.optionStop_cbtn.BackColor = System.Drawing.Color.LightPink;
+            this.optionStop_cbtn.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.optionStop_cbtn.Location = new System.Drawing.Point(16, 210);
+            this.optionStop_cbtn.Name = "optionStop_cbtn";
+            this.optionStop_cbtn.Size = new System.Drawing.Size(73, 23);
+            this.optionStop_cbtn.TabIndex = 10;
+            this.optionStop_cbtn.Text = "Option Stop";
+            this.optionStop_cbtn.UseVisualStyleBackColor = false;
+            this.optionStop_cbtn.CheckedChanged += new System.EventHandler(this.optionStop_cbtn_CheckedChanged);
             // 
-            // coolantPositionDataGridViewTextBoxColumn
+            // getUpdates
             // 
-            this.coolantPositionDataGridViewTextBoxColumn.DataPropertyName = "coolantPosition";
-            this.coolantPositionDataGridViewTextBoxColumn.HeaderText = "Pcool Position";
-            this.coolantPositionDataGridViewTextBoxColumn.Name = "coolantPositionDataGridViewTextBoxColumn";
-            this.coolantPositionDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.getUpdates.Interval = 2000;
+            this.getUpdates.Tick += new System.EventHandler(this.getUpdates_Tick);
             // 
             // command
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.optionStop_cbtn);
+            this.Controls.Add(this.toolOffset_save_btn);
+            this.Controls.Add(this.toolOffset_progbar);
+            this.Controls.Add(this.get_toolOffsets_btn);
             this.Controls.Add(this.software_version_tb);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.model_tb);
@@ -208,5 +265,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn toolLengthDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn toolDiameterDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn coolantPositionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button get_toolOffsets_btn;
+        private System.Windows.Forms.ProgressBar toolOffset_progbar;
+        private System.Windows.Forms.Button toolOffset_save_btn;
+        private System.Windows.Forms.CheckBox optionStop_cbtn;
+        private System.Windows.Forms.Timer getUpdates;
     }
 }

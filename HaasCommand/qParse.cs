@@ -12,7 +12,7 @@ namespace HaasCommand
         {
             Console.WriteLine("Start Parse");
             Console.WriteLine("Input string: " + msg);
-            string nospace = String.Concat(msg.Where(c => !Char.IsWhiteSpace(c)));
+            string nospace = String.Concat(msg.Where(c => !Char.IsWhiteSpace(c))).TrimStart('>');
             Console.WriteLine("Nospace: " + nospace);
             string[] elements = nospace.Split(',');
             Console.WriteLine(elements);
@@ -47,8 +47,15 @@ namespace HaasCommand
                     Console.WriteLine("ERROR: Invalid response");
                     return "";
             }
+            
 
             
+        }
+        public bool toBool(string msg)
+        {
+            Console.WriteLine("passed: " + msg);
+            Console.WriteLine("with removed: " + msg.Remove(msg.Length - 2));
+            return msg.Remove(msg.Length - 2) == "1" ? true : false;
         }
 
         public int m_toolLengthStart = 2001;

@@ -53,7 +53,7 @@
             this.ipAddr_tb.Name = "ipAddr_tb";
             this.ipAddr_tb.Size = new System.Drawing.Size(153, 20);
             this.ipAddr_tb.TabIndex = 1;
-            this.ipAddr_tb.Text = "127.0.0.1";
+            this.ipAddr_tb.Text = "HAASVF4SSTR210";
             // 
             // label_connection2
             // 
@@ -70,7 +70,7 @@
             this.port_tb.Name = "port_tb";
             this.port_tb.Size = new System.Drawing.Size(100, 20);
             this.port_tb.TabIndex = 3;
-            this.port_tb.Text = "228";
+            this.port_tb.Text = "2282";
             // 
             // label_connection3
             // 
