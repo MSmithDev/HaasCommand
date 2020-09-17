@@ -76,14 +76,6 @@
     <Compile Include="ConnectF.Designer.cs">
       <DependentUpon>ConnectF.cs</DependentUpon>
     </Compile>
-    <Compile Include="HCData.cs">
-      <DependentUpon>HCData.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="HCData.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HCData.xsd</DependentUpon>
-    </Compile>
     <Compile Include="debug.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,17 +103,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="HCData.xsc">
-      <DependentUpon>HCData.xsd</DependentUpon>
-    </None>
-    <None Include="HCData.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>HCData.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="HCData.xss">
-      <DependentUpon>HCData.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -135,16 +116,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="HCDataset.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="HCDataset_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>HCDataset.mdf</DependentUpon>
-    </Content>
-    <Content Include="toolData.xml" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

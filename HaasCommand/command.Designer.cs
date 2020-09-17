@@ -36,7 +36,6 @@
             this.toolDiameterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.coolantPositionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet1 = new HaasCommand.DataSet1();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.serial_number_tb = new System.Windows.Forms.TextBox();
@@ -50,7 +49,6 @@
             this.getUpdates = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.toolDataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolDataBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolDataview
@@ -116,12 +114,6 @@
             // toolDataBindingSource
             // 
             this.toolDataBindingSource.DataMember = "toolData";
-            this.toolDataBindingSource.DataSource = this.dataSet1;
-            // 
-            // dataSet1
-            // 
-            this.dataSet1.DataSetName = "DataSet1";
-            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
@@ -243,7 +235,6 @@
             this.Load += new System.EventHandler(this.command_Load);
             ((System.ComponentModel.ISupportInitialize)(this.toolDataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolDataBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,7 +244,6 @@
 
         private System.Windows.Forms.DataGridView toolDataview;
         private System.Windows.Forms.BindingSource toolDataBindingSource;
-        private DataSet1 dataSet1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox serial_number_tb;
