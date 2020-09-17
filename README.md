@@ -1,5 +1,5 @@
 # HaasCommand
-Program for checking/updating tool offsets, work offsets, and controls such as option stop.
+Program for checking/updating tool offsets, work offsets, and controls such as option stop on Next Gen Machines.
 
 ## Installation
 todo
@@ -20,4 +20,4 @@ To save these changes click "Save Changes" a dialog will appear to confirm the c
 You can turn on/off Option stop by clicking the "Option Stop" button
 
 ## Disclamer
-This software is experimental and still in development. Use with caution.
+This software is experimental and still in development. Use with caution. Only use with NGC Controls.
