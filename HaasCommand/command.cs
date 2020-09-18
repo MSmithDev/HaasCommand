@@ -22,7 +22,6 @@ namespace HaasCommand
         private ConnectF connectF;
         static StreamWriter writer;
         static StreamReader reader;
-        private toolData[] td, tdInit;
         private qParse qP = new qParse();
         machineData md = new machineData();
 
@@ -34,6 +33,11 @@ namespace HaasCommand
             public int offsetType;
             public double value;
         }
+
+
+        BindingList<toolData> td = new BindingList<toolData>();
+
+        BindingList<offsetData> od = new BindingList<offsetData>();
 
         public command(ConnectF form)
         {
@@ -62,16 +66,17 @@ namespace HaasCommand
             public double coolantPosition { get; set; }
         }
 
-        T[] InitializeArray<T>(int length) where T : new()
+        public class offsetData
         {
-            T[] array = new T[length];
-            for (int i = 0; i < length; ++i)
-            {
-                array[i] = new T();
-            }
-
-            return array;
+            public int offsetNumber { get; set; }
+            public double x { get; set; }
+            public double y { get; set; }
+            public double z { get; set; }
+            public double a { get; set; }
+            public double b { get; set; }
+            public double c { get; set; }
         }
+
 
         private void command_Load(object sender, EventArgs e)
         {
@@ -100,24 +105,7 @@ namespace HaasCommand
 
 
             Console.WriteLine("Connected");
-            //Console.WriteLine(reader.ReadLine());
-
-            //SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\HCDataset.mdf;Integrated Security=True;Connect Timeout=30");
-
-
-            //String sn = "228";
-
-            //conn.Open();
-
-            //SqlCommand cmd = conn.CreateCommand();
-            //cmd.CommandType = CommandType.Text;
-            //cmd.CommandText = "select * from toolData where serialNumber = " + sn;
-            //cmd.CommandText = "INSERT INTO toolData (serialNumber, toolNumber, toolLength, toolDiameter, coolantPosition) values('"+228+"','"+1+"','"+3+"','"+0.5+"','"+21+"')";
-            //cmd.ExecuteNonQuery();
-
-
-            
-            
+           
             Thread.Sleep(100);
             reader.DiscardBufferedData();
             //Send query for serial number
@@ -144,10 +132,6 @@ namespace HaasCommand
             software_version_tb.Text = md.softwareVersion;
             Thread.Sleep(100);
 
-
-            td = InitializeArray<toolData>(25);
-
-
             getUpdates.Start();
 
         }
@@ -161,38 +145,49 @@ namespace HaasCommand
 
         private void get_toolOffsets_btn_Click(object sender, EventArgs e)
         {
-            toolDataview.DataSource = null;
+            
+            toolDataview.DefaultCellStyle.BackColor = Color.White;
             toolDataview.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
             
             toolOffset_progbar.Visible = true;
             
-            for (int i = 0; i < td.Length; i++)
-            { 
+            td.Clear();
+            toolDataview.DataSource = td;
+            for (int i = 0; i < 24; i++)
+            {
+                int tN;
+                double tL, tD, tC;
                 //Get Tool[i] Length Offset
                 writer.WriteLine("?Q600 " + (qP.m_toolLengthStart + i));
                 writer.Flush();
-                td[i].toolLength = Math.Round(double.Parse(qP.parse(reader.ReadLine())), 4);
+                tL = Math.Round(double.Parse(qP.parse(reader.ReadLine())), 4);
                 Thread.Sleep(50);
 
                 //Get Tool[i] Diameter Offset
                 writer.WriteLine("?Q600 " + (qP.m_toolDiameterStart + i));
                 writer.Flush();
-                td[i].toolDiameter = Math.Round(double.Parse(qP.parse(reader.ReadLine())), 4);
+                tD = Math.Round(double.Parse(qP.parse(reader.ReadLine())), 4);
                 Thread.Sleep(50);
 
                 //Get Tool[i] Pcool Offset
                 writer.WriteLine("?Q600 " + (qP.m_toolCoolantStart + i));
                 writer.Flush();
-                td[i].coolantPosition = double.Parse(qP.parse(reader.ReadLine()));
+                tC = double.Parse(qP.parse(reader.ReadLine()));
 
-                td[i].toolNumber = i + 1;
+                tN = i + 1;
+
+                td.Add(new toolData { toolNumber = tN, toolDiameter = tD, toolLength = tL, coolantPosition = tC });
+
                 Thread.Sleep(50);
                 toolOffset_progbar.Value = i + 1;
+                toolDataview.Refresh();
 
             }
             toolOffset_progbar.Visible = false;
-            tdInit = td;
-            toolDataview.DataSource = td;
+           
+            
+            toolDataview.Refresh();
+
         }
 
         private void toolOffset_save_btn_Click(object sender, EventArgs e)
@@ -206,7 +201,7 @@ namespace HaasCommand
 
                         switch(cell.ColumnIndex)
                         {
-                            case 2:
+                            case 1:
                                 //Length
                                 changes.Add(new change()
                                 {
@@ -218,7 +213,7 @@ namespace HaasCommand
                                 Console.WriteLine("Length Change: Tool # " + (cell.RowIndex + 1));
                                 break;
 
-                            case 3:
+                            case 2:
                                 //Diameter
                                 changes.Add(new change()
                                 {
@@ -229,7 +224,7 @@ namespace HaasCommand
                                 Console.WriteLine("Diameter Change: Tool # " + (cell.RowIndex + 1));
                                 break;
 
-                            case 4:
+                            case 3:
                                 //Pcool
                                 changes.Add(new change()
                                 {
@@ -292,13 +287,79 @@ namespace HaasCommand
         private void toolDataview_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             Console.WriteLine(toolDataview.CurrentCell);
-            if (toolDataview.CurrentCell != null) {
+            if (toolDataview.CurrentCell != null)
+            {
                 toolDataview.CurrentCell.Style.BackColor = Color.LightPink;
+            }
+        }
+
+        private void getWorkOffsets_btn_Click(object sender, EventArgs e)
+        {
+            offsetDGV.DefaultCellStyle.BackColor = Color.White;
+            offsetDGV.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
+
+
+            od.Clear();
+            offsetDGV.DataSource = od;
+            for (int i = 0; i < 6; i++)
+            {
+                int offsetNumber;
+                double x, y, z, a, b, c;
+
+                //Get X offset value
+                writer.WriteLine("?Q600 " + (qP.m_workOffsetStarts[i,1]));
+                writer.Flush();
+                x = Math.Round(double.Parse(qP.parse(reader.ReadLine())), 4);
+                Thread.Sleep(50);
+
+                //Get Y offset value
+                writer.WriteLine("?Q600 " + (qP.m_workOffsetStarts[i, 1]+1));
+                writer.Flush();
+                y = Math.Round(double.Parse(qP.parse(reader.ReadLine())), 4);
+                Thread.Sleep(50);
+
+                //Get Z offset value
+                writer.WriteLine("?Q600 " + (qP.m_workOffsetStarts[i, 1]+2));
+                writer.Flush();
+                z = Math.Round(double.Parse(qP.parse(reader.ReadLine())), 4);
+                Thread.Sleep(50);
+
+                //Get A offset value
+                writer.WriteLine("?Q600 " + (qP.m_workOffsetStarts[i, 1]+3));
+                writer.Flush();
+                a = Math.Round(double.Parse(qP.parse(reader.ReadLine())), 4);
+                Thread.Sleep(50);
+
+                //Get B offset value
+                writer.WriteLine("?Q600 " + (qP.m_workOffsetStarts[i, 1]+4));
+                writer.Flush();
+                b = Math.Round(double.Parse(qP.parse(reader.ReadLine())), 4);
+                Thread.Sleep(50);
+
+                //Get C offset value
+                writer.WriteLine("?Q600 " + (qP.m_workOffsetStarts[i, 1]+5));
+                writer.Flush();
+                c = Math.Round(double.Parse(qP.parse(reader.ReadLine())), 4);
+                Thread.Sleep(50);
+
+                offsetNumber = 54 + i;
+
+                od.Add(new offsetData {offsetNumber = offsetNumber,x = x, y = y, z = z, a = a, b = b, c = c});
+
+                //Thread.Sleep(50);
+                //toolOffset_progbar.Value = i + 1;
+                offsetDGV.Refresh();
 
             }
+        }
 
+        private void offsetDGV_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            Console.WriteLine(offsetDGV.CurrentCell);
+            if (offsetDGV.CurrentCell != null)
+            {
+                offsetDGV.CurrentCell.Style.BackColor = Color.LightPink;
             }
-
-       
+        }
     }
 }

@@ -104,6 +104,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\command.change.datasource" />
+    <None Include="Properties\DataSources\command.datasource" />
+    <None Include="Properties\DataSources\command.machineData.datasource" />
+    <None Include="Properties\DataSources\command.toolData.datasource" />
+    <None Include="Properties\DataSources\ConnectF.datasource" />
+    <None Include="Properties\DataSources\debug.datasource" />
+    <None Include="Properties\DataSources\HaasCommand.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\HaasCommand.Properties.Settings.datasource" />
+    <None Include="Properties\DataSources\Program.datasource" />
+    <None Include="Properties\DataSources\qParse.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -128,6 +138,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

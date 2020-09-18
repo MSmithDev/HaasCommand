@@ -67,7 +67,7 @@ namespace HaasCommand
         public int m_toolCoolantStart = 3401;
         public int m_toolCoolantEnd = 3600;
 
-
+        public int[,] m_workOffsetStarts = { {1,5221},{2,5241},{ 3, 5261 },{ 4, 5281 },{ 5, 5301 },{ 6, 5321 }};
 
 
 
