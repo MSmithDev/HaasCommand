@@ -42,6 +42,10 @@ namespace HaasCommand
                     Console.WriteLine("Parsing Macro Var");
                     return elements[1];
 
+                case "P.O.TIME":
+                    Console.WriteLine("Parsing Power on time");
+                    return elements[1];
+
 
                 default:
                     Console.WriteLine("ERROR: Invalid response");
