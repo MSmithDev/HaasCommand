@@ -400,11 +400,6 @@
         private System.Windows.Forms.TextBox model_tb;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox software_version_tb;
-        private System.Windows.Forms.DataGridViewTextBoxColumn serialNumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn toolNumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn toolLengthDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn toolDiameterDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn coolantPositionDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button get_toolOffsets_btn;
         private System.Windows.Forms.ProgressBar toolOffset_progbar;
         private System.Windows.Forms.Button toolOffset_save_btn;
